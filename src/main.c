@@ -12,3 +12,17 @@ void output(int n, int m, int field[n][m]) {
         printw("\n");
     }
 }
+
+void speed_change(int* p_speed) {
+    int key = getch();
+    if (key == 'w' && (*p_speed - 2500 > 0)) {
+        *p_speed -= 2500;
+        printw("SPEED+");
+    }
+    if (key == 's') {
+        *p_speed += 2500;
+        printw("SPEED-");
+    }
+    if (key == 'q') *p_speed = 0;
+    refresh();
+}
