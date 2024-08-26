@@ -3,6 +3,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+void fill_field(int n, int m, int (*field)[m]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            int x;
+            scanf("%d", &x);
+            field[i][j] = x;
+        }
+    }
+}
+
 void output(int n, int m, int field[n][m]) {
     printw("\n");
     for (int i = 0; i < n; i++) {
