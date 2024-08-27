@@ -3,6 +3,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+void init_ncurses() {
+    if (freopen("/dev/tty", "r", stdin) != NULL) {
+        initscr();
+        timeout(1);
+        keypad(stdscr, TRUE);
+        noecho();
+        nodelay(stdscr, TRUE);
+    }
+}
+
 void fill_field(int n, int m, int (*field)[m]) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
