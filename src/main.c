@@ -3,6 +3,20 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+int check_friends(int n, int m, int field[n][m], int i, int j) {
+    int friends = 0;
+    for (int y = -1; y <= 1; y++) {
+        for (int x = -1; x <= 1; x++) {
+            int friend_i = i + y == n ? 0 : i + y < 0 ? n - 1 : i + y;
+            int friend_j = j + x == m ? 0 : j + x < 0 ? m - 1 : j + x;
+            if ((friend_i != i || friend_j != j) && (field[friend_i][friend_j] == 1)) {
+                friends += 1;
+            }
+        }
+    }
+    return friends;
+}
+
 void init_ncurses() {
     if (freopen("/dev/tty", "r", stdin) != NULL) {
         initscr();
